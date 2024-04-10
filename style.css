@@ -1,0 +1,136 @@
+@font-face {
+    font-family: "Minecraft";
+    src: local(''),
+        url("assets/fonts/minecraft_font.woff") format("woff");
+}
+
+:root {
+    --blackish: #222;
+    --whiteish: #e5e5e5;
+    --red:  #ff5e56;
+    --yellow: #ffbd2e;
+    --green: #27c93f;
+    --backgroundSize: 128px;
+    --btn-size: 30pt;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;	margin: 0; padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--whiteish);
+    place-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("assets/images/dirt.png");
+    background-size: var(--backgroundSize);
+	image-rendering: pixelated;
+    box-sizing: border-box;
+    font-family: "Minecraft";
+    animation: movingBackground 15s linear infinite;
+}
+
+body:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0,0.9);
+    z-index: 1;
+}
+
+@keyframes movingBackground {
+    from {
+        background-position: 0 var(--backgroundSize);
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+.content {
+    width: 65vh;
+    height: 30vh;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    column-gap: 8px;
+    text-shadow: 2px 2px #000A;
+}
+
+header div {
+    display: flex;
+    flex-direction: row;
+    row-gap: 8px;
+    font-size: 24px;
+}
+
+.socials {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(1fr, auto));;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'left right';
+    grid-gap: 8px;
+
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    height: var(--btn-size);
+    width: 100%;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	background: #999 url("assets/images/button_background.png") center / cover;
+	image-rendering: pixelated;
+	border: 2px solid #000;
+
+    &:hover .title {
+		background-color: rgba(100, 100, 255, .45);
+		text-shadow: 2px 2px #202013CC;
+		color: #FFFFA0;
+
+        .icon {
+            filter: invert(96%) sepia(13%) saturate(1365%) hue-rotate(341deg) brightness(106%) contrast(108%);
+        }
+	}
+
+	&:active .title {
+		box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
+	}
+
+	.title {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+		width: 100%;
+        height: 100%;
+		padding-bottom: .3em;
+        align-items: center;
+        justify-content: center;
+		text-decoration: none;
+		color: #DDD;
+		text-shadow: 2px 2px #000A;
+		box-shadow: inset -2px -4px #0006, inset 2px 2px #FFF7;
+
+        .icon {
+            margin: 0px 10px -3px 0px;
+            filter: invert(98%) sepia(3%) saturate(4176%) hue-rotate(189deg) brightness(121%) contrast(73%);
+        }
+	}
+}
